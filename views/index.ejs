@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeCook - Authentic Indian Home Kitchen</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main>
+        <section class="hero-banner" id="hero-slider">
+            <div class="banner-content">
+                <h1>Taste of Home, Delivered</h1>
+                <p>Fresh, homemade meals made with health & local tastes, delivered right to your neighbourhood.</p>
+                <a href="/meal_plans.html" class="btn btn-primary">Find Meals Now</a>
+            </div>
+        </section>
+
+        <section class="usp-cards">
+            <h2>How It Works</h2>
+            <p class="subtitle">Getting authentic, homemade Indian meals delivered right to your door is easy in three simple steps.</p>
+
+            <div class="cards-container">
+                <div class="usp-card">
+                    <img src="/images/icon-connect.png" alt="Connect Icon">
+                    <h3>Connect & Register</h3>
+                    <p>Users sign up with preferences; HomeCooks register, undergo verification, and set menus.</p>
+                </div>
+                <div class="usp-card">
+                    <img src="/images/icon-subscribe.png" alt="Subscribe Icon">
+                    <h3>Choose Your Plan</h3>
+                    <p>Select Daily, Weekly, or Monthly plans. AI matches users with the best nearby home cook (2-10 km radius).</p>
+                </div>
+                <div class="usp-card">
+                    <img src="/images/icon-enjoy.png" alt="Enjoy Icon">
+                    <h3>Enjoy & Review</h3>
+                    <p>Receive fresh meals via delivery or pickup. Provide ratings and reviews to ensure continuous quality improvement.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-choose-bg-section">
+            <div class="overlay"></div>
+            <div class="content-wrapper">
+                <section class="usp-cards" style="background: none; box-shadow: none; padding: 40px 0;">
+                    <h2>Why Choose HomeCook?</h2>
+                    <p class="subtitle">We combine convenience, quality, trust, and safety, transforming how you enjoy homemade meals.</p>
+                    <div class="cards-container">
+                        <div class="usp-card">
+                            <h3>Homemade Quality & Safety</h3>
+                            <p>Meals are <strong>nutritious, flavorful, and comforting</strong>. We ensure hygiene through regular <strong>surprise inspections</strong> and mandatory licensing checks.</p>
+                        </div>
+                        <div class="usp-card">
+                            <h3>Personalization & Health</h3>
+                            <p>Meals are <strong>personalized</strong> based on your food preferences, allergies, and health needs. This suits you perfectly, unlike impersonal restaurant food.</p>
+                        </div>
+                        <div class="usp-card">
+                            <h3>Empowering Home Cooks</h3>
+                            <p>We provide a <strong>sustainable income</strong> stream for home cooks, helping them with licenses and offering a <strong>fair revenue-sharing model</strong>.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section" style="padding: 40px 5%; background: white; margin: 40px 0;">
+            <h2 style="text-align: center; margin-bottom: 20px;">Search Your Favorite Meal</h2>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <input type="text" id="meal-search" placeholder="Search meals, plans, or cuisines..." 
+                       style="width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 5px; font-size: 1rem;">
+                <div id="search-results" style="margin-top: 20px; display: none;"></div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+    <script src="/js/script.js"></script>
+</body>
+</html>
+

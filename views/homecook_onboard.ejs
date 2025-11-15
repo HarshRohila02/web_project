@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeCook - Partner with Us</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        
+        <div class="auth-image-panel" style="background-color: var(--secondary-color);">
+            <div style="text-align: center; color: white;">
+                <img src="/images/logo.png" alt="HomeCook Logo" class="logo" style="height: 150px; width: auto; margin-bottom: 20px;">
+                <h1 style="font-size: 2.5rem;">Earn doing what you love.</h1>
+                <p style="font-size: 1.1rem; margin-top: 15px;">Generate a <strong>sustainable income</strong> by sharing your cooking skills with your local community.</p>
+                <p style="font-size: 0.9rem; margin-top: 20px; color: #f0f0f0;">We provide training, licensing assistance, and a supportive platform.</p>
+            </div>
+        </div>
+
+        <div class="auth-form-panel">
+            <h2>Become a HomeCook Chef</h2>
+            <p class="subtitle">Join our community and start earning a steady income today!</p>
+
+            <form id="homecookOnboardForm">
+                <div class="form-group">
+                    <label for="chefName">Full Name:</label>
+                    <input type="text" id="chefName" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="chefEmail">Email Address:</label>
+                    <input type="email" id="chefEmail" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="chefLocation">Cooking Location (Area/Locality):</label>
+                    <input type="text" id="chefLocation" name="location" placeholder="e.g., Sector 10, Gurgaon" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenceStatus">Do you currently have a Food Safety Licence?</label>
+                    <select id="licenceStatus" name="licenceStatus" required style="width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;">
+                        <option value="">Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No, but I need assistance</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="licenseFile">Upload License Document (if available):</label>
+                    <input type="file" id="licenseFile" name="licenseFile" accept=".pdf,.jpg,.jpeg,.png">
+                    <div id="file-preview" style="margin-top: 10px; display: none;"></div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Application</button>
+            </form>
+            
+            <p id="onboardMessage" style="display: none; margin-top: 15px; color: green; font-weight: bold; text-align: center;"></p>
+
+            <p class="link-text" style="margin-top: 50px;">
+                <a href="/">← Back to Home</a>
+            </p>
+        </div>
+    </div>
+    
+    <script src="/js/script.js"></script>
+</body>
+</html>
+

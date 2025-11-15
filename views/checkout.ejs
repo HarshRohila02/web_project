@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeCook - Checkout</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main class="checkout-page">
+        <h2>Complete Your Order</h2>
+        <p class="subtitle">Review your order details and confirm payment.</p>
+
+        <div class="checkout-summary">
+            <h3>Order Summary</h3>
+            
+            <ul id="checkout-summary-list" style="list-style: none; padding: 0;">
+            </ul>
+            
+            <hr>
+            
+            <div class="checkout-item">
+                <span>Subtotal:</span>
+                <span id="subtotal-amount">₹0.00</span>
+            </div>
+            <div class="checkout-item">
+                <span>Tax (5%):</span>
+                <span id="tax-amount">₹0.00</span>
+            </div>
+            <div class="checkout-item checkout-total">
+                <span>Total Payable:</span>
+                <span id="total-amount">₹0.00</span>
+            </div>
+
+            <h3 style="margin-top: 30px;">Delivery / Pickup Details</h3>
+            
+            <div class="form-group" style="margin: 15px 0;">
+                <label>
+                    <input type="radio" name="deliveryOption" value="pickup" checked> Self-Pickup
+                </label>
+                <label style="margin-left: 20px;">
+                    <input type="radio" name="deliveryOption" value="delivery"> Home Delivery
+                </label>
+            </div>
+            
+            <div id="address-section" style="display: none; margin-top: 20px;">
+                <div class="form-group">
+                    <label for="deliveryAddress">Delivery Address:</label>
+                    <textarea id="deliveryAddress" name="address" rows="3" placeholder="Enter your complete address"></textarea>
+                </div>
+            </div>
+            
+            <div class="form-group" style="margin-top: 20px;">
+                <label for="customerName">Your Name:</label>
+                <input type="text" id="customerName" name="customerName" required>
+            </div>
+            <div class="form-group">
+                <label for="customerEmail">Email:</label>
+                <input type="email" id="customerEmail" name="customerEmail" required>
+            </div>
+            <div class="form-group">
+                <label for="customerPhone">Phone:</label>
+                <input type="tel" id="customerPhone" name="customerPhone" required>
+            </div>
+
+            <button class="btn btn-primary" id="pay-button">Proceed to Pay</button>
+            
+            <p class="link-text" style="margin-top: 20px;">
+                <a href="/meal_plans.html">← Back to Meal Plans</a>
+            </p>
+        </div>
+        
+    </main>
+    
+    <%- include('partials/footer') %>
+    <script src="/js/script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeCook - Contact Us</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <section class="contact-page-section">
+        <div class="overlay"></div>
+        <div class="content-wrapper">
+            <main class="content-centered" style="padding-top: 0;">
+                <h2>Get In Touch</h2>
+                <p class="subtitle">Have questions about your meal, a subscription, or joining the HomeCook community?</p>
+
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="contactName">Name:</label>
+                        <input type="text" id="contactName" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email:</label>
+                        <input type="email" id="contactEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Message:</label>
+                        <textarea id="contactMessage" name="message" rows="5" required maxlength="500"></textarea>
+                        <small id="char-counter" style="color: #666; display: block; text-align: right; margin-top: 5px;">0 / 500 characters</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <p id="form-message" style="display: none; margin-top: 15px; color: green; font-weight: bold; text-align: center;"></p>
+                </form>
+            </main>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+    <script src="/js/script.js"></script>
+</body>
+</html>
+

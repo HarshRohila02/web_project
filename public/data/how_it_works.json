@@ -1,0 +1,40 @@
+{
+    "pageTitle": "How It Works - From Kitchen to Your Table",
+    "subtitle": "Our platform connects you to fresh, homemade meals through a simple, trusted process for both users and home cooks.",
+    "steps": [
+        {
+            "id": "registration_matching",
+            "order": 1,
+            "title": "Registration & Matching",
+            "image": "images/icon-connect.png",
+            "bullets": [
+                {"label": "For Users", "text": "Sign up and provide dietary preferences, allergies, and location details."},
+                {"label": "For HomeCooks", "text": "Register, get verified, upload mandatory food licenses, and set up your menu."},
+                {"label": "The Match", "text": "Our AI matches users with a highly-rated home cook within a 2 to 10 km radius based on preferences."}
+            ]
+        },
+        {
+            "id": "plan_selection_preparation",
+            "order": 2,
+            "title": "Plan Selection & Preparation",
+            "image": "images/icon-subscribe.png",
+            "bullets": [
+                {"label": "Choose Your Plan", "text": "Users select from Daily, Weekly, or Monthly flexible subscription plans."},
+                {"label": "Order Processing", "text": "Home cooks receive the order and prepare meals according to their selected weekly menus and user preferences."},
+                {"label": "Quality Control", "text": "Regular inspections and surprise checks ensure adherence to food safety and hygiene standards."}
+            ]
+        },
+        {
+            "id": "delivery_feedback",
+            "order": 3,
+            "title": "Delivery & Feedback",
+            "image": "images/icon-enjoy.png",
+            "bullets": [
+                {"label": "Receive Your Meal", "text": "Users can opt for home delivery or choose self-pickup/drop-off for added flexibility."},
+                {"label": "Real-Time Tracking", "text": "Transparency is ensured with real-time order tracking."},
+                {"label": "Improvement Cycle", "text": "Users provide ratings and reviews on meal quality and service, helping home cooks refine their offerings and track performance."}
+            ]
+        }
+    ]
+}
+

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeCook - Reviews</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main class="content-centered">
+        <h2>Customer Reviews</h2>
+        <p class="subtitle">See what our customers are saying about their HomeCook experience.</p>
+
+        <!-- Review Filters -->
+        <div style="max-width: 800px; margin: 30px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;">
+                <select id="review-rating-filter" style="flex: 1; padding: 10px; border: 2px solid #ddd; border-radius: 5px;">
+                    <option value="">All Ratings</option>
+                    <option value="5">5 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="2">2 Stars</option>
+                    <option value="1">1 Star</option>
+                </select>
+                <select id="review-sort" style="flex: 1; padding: 10px; border: 2px solid #ddd; border-radius: 5px;">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="rating">Highest Rating</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Reviews Display -->
+        <div id="reviews-container" style="max-width: 800px; margin: 0 auto;">
+            <!-- Reviews will be loaded here -->
+        </div>
+
+        <!-- Submit Review Form -->
+        <div style="max-width: 800px; margin: 50px auto; padding: 30px; background: white; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <h3>Write a Review</h3>
+            <form id="reviewForm">
+                <div class="form-group">
+                    <label for="reviewMealName">Meal Name:</label>
+                    <input type="text" id="reviewMealName" name="mealName" placeholder="e.g., Rajma Chawal Combo" required>
+                </div>
+                <div class="form-group">
+                    <label for="reviewUserName">Your Name:</label>
+                    <input type="text" id="reviewUserName" name="userName" required>
+                </div>
+                <div class="form-group">
+                    <label for="reviewUserEmail">Your Email:</label>
+                    <input type="email" id="reviewUserEmail" name="userEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="reviewRating">Rating:</label>
+                    <div id="star-rating" style="font-size: 2rem; cursor: pointer; margin: 10px 0;">
+                        <span class="star" data-rating="1">☆</span>
+                        <span class="star" data-rating="2">☆</span>
+                        <span class="star" data-rating="3">☆</span>
+                        <span class="star" data-rating="4">☆</span>
+                        <span class="star" data-rating="5">☆</span>
+                    </div>
+                    <input type="hidden" id="reviewRating" name="rating" required>
+                </div>
+                <div class="form-group">
+                    <label for="reviewComment">Your Review:</label>
+                    <textarea id="reviewComment" name="comment" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+                <div id="review-message" style="display: none; margin-top: 15px; padding: 10px; border-radius: 5px; text-align: center;"></div>
+            </form>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+    <script src="/js/script.js"></script>
+</body>
+</html>
+

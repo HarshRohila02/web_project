@@ -1,0 +1,698 @@
+/* Basic Reset and Root Styles */
+:root {
+    --primary-color: #e67e22; /* Warm Orange/Rust */
+    --secondary-color: #38761d; /* Deep Green */
+    --text-color: #4a4a4a; /* Dark Gray */
+    --light-bg: #f5f5f0; /* Off-White/Cream */
+    --bg-color-main: #fcfcfc; /* A slightly brighter background for main content */
+    --font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--light-bg);
+}
+
+/*  Header & Navigation  */
+.main-header {
+    background-color: white;
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px; /* Adjust size of the logo */
+    margin-right: 10px;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.tagline {
+    font-size: 0.7rem;
+    color: var(--text-color);
+    margin-left: 10px;
+    letter-spacing: 1px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 8px 15px;
+    font-weight: 500;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/*  Buttons  */
+.header-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, opacity 0.3s;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-login {
+    background-color: #f0f0f0;
+    color: var(--text-color);
+}
+
+.btn-order, .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-order:hover, .btn-primary:hover, .btn-login:hover {
+    opacity: 0.9;
+}
+
+.btn-select-plan, .btn-add-to-cart {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px 15px;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.btn-select-plan:hover, .btn-add-to-cart:hover {
+    background-color: #316518;
+}
+
+/* Footer */
+.main-footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    margin-top: 50px;
+}
+
+/* Utility Classes & Layout  */
+main {
+    padding: 30px 5%;
+}
+
+h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.content-centered {
+    max-width: 900px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+
+/*  AUTHENTICATION (Login/Signup) PAGES */
+.auth-container {
+    display: flex; /* Use Flexbox for the two-column layout */
+    min-height: 100vh;
+    background-color: var(--light-bg);
+}
+
+.auth-image-panel {
+    flex: 1;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.auth-image-panel img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}
+
+.auth-form-panel {
+    flex: 2;
+    padding: 100px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.auth-form-panel h2 {
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 2.5rem;
+}
+
+.auth-form-panel .subtitle {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.auth-form-panel .form-group {
+    margin-bottom: 15px;
+}
+
+.auth-form-panel .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.auth-form-panel .form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.auth-form-panel button {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.link-text {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.link-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Home Page Styles */
+.hero-banner {
+    background-image: url('/images/banner.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: -30px -5% 50px;
+}
+
+.banner-content {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    padding: 30px 50px;
+    border-radius: 10px;
+}
+
+.banner-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.banner-content p {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+}
+
+.usp-cards {
+    padding: 40px 0;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.usp-card {
+    flex: 1;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.usp-card img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.usp-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+/* Background section for Why Choose HomeCook */
+.why-choose-bg-section {
+    position: relative; /* Needed for absolute positioning of the overlay */
+    background-image: url('/images/why_choose_bg.jpg'); /* new background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Makes the background fixed while scrolling */
+    padding: 80px 0; /* Add padding top/bottom */
+    color: white; /* Default text color for this section */
+    text-align: center;
+    margin: 50px -5% 0; /* Extends to page edges like banner, resets top margin */
+}
+
+.why-choose-bg-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+    z-index: 1; /* Ensures overlay is behind text, but over background image */
+}
+
+.why-choose-bg-section .content-wrapper {
+    position: relative; /* Brings content above the overlay */
+    z-index: 2; /* Ensures content is above the overlay */
+    max-width: 1200px; /* Constrain content width for readability */
+    margin: 0 auto;
+    padding: 0 5%; /* Add some padding on sides for smaller screens */
+}
+
+/* Override existing USP card styles for this section to fit the new background */
+.why-choose-bg-section .usp-cards {
+    background: none; /* Remove white background from usp-cards themselves */
+    box-shadow: none; /* Remove shadow */
+    padding: 0; /* Remove internal padding */
+    color: white; /* Ensure text is visible on dark overlay */
+}
+
+.why-choose-bg-section h2 {
+    color: white; /* Ensure heading is white on dark overlay */
+    font-size: 2.5rem;
+}
+
+.why-choose-bg-section .subtitle {
+    color: #f0f0f0; /* Lighter subtitle color */
+}
+
+.why-choose-bg-section .usp-card {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white cards */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* More prominent shadow for cards */
+}
+
+.why-choose-bg-section .usp-card h3 {
+    color: var(--secondary-color); /* Keep the green for card headings */
+}
+
+.why-choose-bg-section .usp-card p {
+    color: var(--text-color); /* Keep dark text for card content */
+}
+
+
+/* How It Works Page Styles*/
+.steps-container {
+    display: flex;
+    flex-direction: column; /* Stack step cards vertically */
+    align-items: center; /* Center each card */
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.step-card {
+    flex: 1;
+    width: 100%;
+    max-width: 700px; /* Keep a pleasant readable width */
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.step-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+/* Meal Plans Page Styles  */
+.plans-container {
+    display: flex;
+    
+    justify-content: space-between; /* Spreads items evenly */
+    
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+.plan-card {
+    /* Set a fixed width or use flex-grow for equal spacing */
+    width: 30%; /* Set a percentage width for responsiveness */
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.plan-card.featured {
+    border: 3px solid var(--primary-color);
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.plan-card h3 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.plan-card .price {
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.plan-card ul {
+    list-style: none;
+    text-align: left;
+}
+
+.plan-card li {
+    padding: 5px 0;
+    border-bottom: 1px dotted #eee;
+}
+
+.section-title {
+    margin-top: 50px;
+}
+
+.instant-meals-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Ensure cards in the row are equal height */
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.meal-card {
+    width: 300px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Ensure uniform vertical layout */
+}
+
+.meal-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block; /* Remove default inline gap below images */
+}
+
+.meal-card h4 {
+    color: var(--text-color);
+    margin-top: 15px;
+    padding: 0 15px;
+}
+
+.meal-card .meal-price {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin: 5px 0;
+}
+
+.meal-card .meal-description {
+    font-size: 0.9rem;
+    color: #777;
+    padding: 0 15px; /* Remove bottom padding so button aligns perfectly */
+    min-height: 60px; /* Baseline equal height */
+    flex: 1 1 auto; /* Grow to fill available space so button sits at bottom */
+}
+
+/* Keep the action button pinned at the bottom for equal height cards */
+.instant-meals-container .btn-add-to-cart {
+    margin-top: auto; /* Push button to the bottom of the card */
+    margin-bottom: 15px;
+    align-self: center; /* Center horizontally inside flex column */
+    width: auto; /* Override global 100% width for nicer centering */
+    min-width: 160px; /* Consistent button size */
+}
+
+/*Checkout Page Styles  */
+.checkout-summary {
+    max-width: 700px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.checkout-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dotted #eee;
+}
+
+.checkout-total {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-top: 20px;
+}
+
+.checkout-summary button {
+    margin-top: 30px;
+    width: 100%;
+}
+/* ... at the bottom of your style.css file ... */
+
+/* --- Checkout Page Styles --- */
+.checkout-summary {
+    max-width: 700px;
+    margin: 50px auto;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* UPDATED: Use Flexbox for alignment */
+.checkout-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* This vertically centers the items */
+    padding: 10px 0;
+    border-bottom: 1px dotted #eee;
+}
+
+/* This targets the first span (name) in the item */
+.checkout-item span:first-child {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.checkout-total {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-top: 20px;
+}
+
+.checkout-summary button {
+    margin-top: 30px;
+    width: 100%;
+}
+
+/* NEW: Styles for the "Remove" button */
+.btn-remove {
+    background-color: #e74c3c; /* A nice red */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 15px; /* Adds space between price and button */
+    transition: background-color 0.3s;
+}
+
+.btn-remove:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+/* --- Checkout quantity controls and remove link --- */
+.co-left { flex: 1; font-weight: 600; color: var(--text-color); }
+.co-middle { width: 140px; display: flex; justify-content: center; }
+.co-right { width: 160px; text-align: right; }
+
+.line-amount { font-weight: 600; margin-bottom: 4px; }
+
+.qty-control {
+    display: flex; /* Ensure horizontal layout */
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    padding: 4px 10px;
+    background: #fafafa;
+}
+.qty-btn {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+    line-height: 1;
+}
+.qty-num { min-width: 16px; text-align: center; font-weight: 600; }
+
+.remove-link {
+    background: transparent;
+    border: none;
+    color: #d35400;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* Override the general checkout button rule inside the summary so qty/remove don't stretch */
+.checkout-summary .qty-btn,
+.checkout-summary .remove-link {
+    width: auto !important;
+    margin-top: 0 !important;
+}
+/*  Contact Page Styles */
+.contact-form {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin: 30px auto;
+    max-width: 600px; /* Limits the form width for a clean look */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block; /* Makes the label take its own line */
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--secondary-color);
+}
+/* Background section for Contact Page */
+.contact-page-section {
+    position: relative; /* Needed for absolute positioning of the overlay */
+    background-image: url('/images/contact_bg.jpg'); /* Your new background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Optional: Makes the background fixed while scrolling */
+    padding: 80px 0; /* Add generous padding top/bottom */
+    margin: 50px -5% 0; /* Extends to page edges, resets top margin */
+    color: var(--text-color); /* Default text color for this section */
+    text-align: center;
+}
+
+.contact-page-section .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7); /* Light, semi-transparent white overlay */
+    z-index: 1; /* Ensures overlay is behind text, but over background image */
+}
+
+.contact-page-section .content-wrapper {
+    position: relative; /* Brings content above the overlay */
+    z-index: 2; /* Ensures content is above the overlay */
+    max-width: 900px; /* Constrain content width for readability */
+    margin: 0 auto;
+    padding: 0 5%; /* Add some padding on sides for smaller screens */
+}
+
+/* Ensure headings and subtitles are visible over the background */
+.contact-page-section h2 {
+    color: var(--primary-color); /* Keep primary color for heading */
+    font-size: 2.5rem;
+}
+
+.contact-page-section .subtitle {
+    color: var(--text-color); /* Keep default text color */
+}
+
+/* Ensure the contact form stands out */
+.contact-page-section .contact-form {
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly more opaque white for the form itself */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Clearer shadow */
+}
+
+
+/* FIX: Ensure all input fields and text areas span the full width of the form container */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: 100%; /* This is the key fix for the width issue */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.contact-form .btn-primary {
+    width: 200px; /* Set button width for a professional look */
+    display: block;
+    margin-top: 20px;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeCook - Login</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        
+        <div class="auth-image-panel">
+            <div style="text-align: center;">
+                <img src="/images/logo.png" alt="HomeCook Logo" class="logo" style="height: 150px; width: auto; margin-bottom: 20px;">
+                <h1 class="site-title" style="font-size: 2.5rem;">Home Cook</h1>
+                <p class="tagline" style="font-size: 1rem; color: #4a4a4a;">INDIAN HOME KITCHEN</p>
+            </div>
+        </div>
+
+        <div class="auth-form-panel">
+            <div id="loginSection">
+                <h2>Welcome Back!</h2>
+                <p class="subtitle">Sign in to your account and enjoy delicious, personalized meals.</p>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email:</label>
+                        <input type="email" id="loginEmail" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password:</label>
+                        <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                    <p class="link-text">
+                        <a href="#">Forgot Password?</a>
+                        <br>
+                        Don't have an account? <a href="/signup.html">Sign Up</a>
+                    </p>
+                    <div id="login-message" style="display: none; margin-top: 15px; padding: 10px; border-radius: 5px; text-align: center;"></div>
+                </form>
+            </div>
+
+            <p class="link-text" style="margin-top: 50px;">
+                <a href="/">← Back to Home</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
+

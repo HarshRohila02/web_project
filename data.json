@@ -1,0 +1,157 @@
+{
+  "subscriptionPlans": [
+    {
+      "id": "plan_daily",
+      "name": "Daily Plan",
+      "price": 400,
+      "priceText": "₹400 / Day",
+      "featured": false,
+      "features": [
+        "Two meals (any two of the day)",
+        "Best for trials or short-term needs",
+        "Delivery or Self-Pickup options",
+        "Affordability is ensured"
+      ]
+    },
+    {
+      "id": "plan_weekly",
+      "name": "Weekly Plan",
+      "price": 2000,
+      "priceText": "₹2,000 / Week",
+      "featured": false,
+      "features": [
+        "14 meals included",
+        "Encourages cost efficiency",
+        "Optional 'Trial Week' available",
+        "Eliminate unnecessary hustle"
+      ]
+    },
+    {
+      "id": "plan_monthly",
+      "name": "Monthly Plan",
+      "price": 6000,
+      "priceText": "₹6,000 / Month",
+      "featured": false,
+      "features": [
+        "60 meals included",
+        "Maximum savings for long-term use",
+        "Fully personalized meals based on preferences",
+        "Guaranteed primary home cook"
+      ]
+    }
+  ],
+  "instantMeals": [
+    {
+      "id": "meal_rajma",
+      "name": "Rajma Chawal Combo",
+      "price": 170,
+      "description": "A comforting, home-cooked plate of kidney beans curry served with basmati rice.",
+      "image": "images/rajma_chawal.jpg"
+    },
+    {
+      "id": "meal_thali",
+      "name": "Homestyle Veg Thali",
+      "price": 220,
+      "description": "A complete meal: two vegetable curries, dal, rice, 3 rotis, and a small fresh salad.",
+      "image": "images/homestyle_thali.jpg"
+    },
+    {
+      "id": "meal_paneer",
+      "name": "Palak Paneer & Roti",
+      "price": 200,
+      "description": "Fresh paneer in a classic spinach curry, served with 4 whole wheat rotis.",
+      "image": "images/paneer_roti.jpg"
+    },
+    {
+      "id": "meal_chole",
+      "name": "Chole Bhature",
+      "price": 180,
+      "description": "Spicy chickpea curry served with fluffy deep-fried bread, accompanied by pickled onions and green chutney.",
+      "image": "images/chole_bhature.jpg"
+    },
+    {
+      "id": "meal_dal_makhani",
+      "name": "Dal Makhani with Jeera Rice",
+      "price": 190,
+      "description": "Creamy black lentils slow-cooked with butter and cream, served with aromatic cumin rice.",
+      "image": "images/dal_makhani.jpg"
+    },
+    {
+      "id": "meal_aloo_paratha",
+      "name": "Aloo Paratha with Pickle & Curd",
+      "price": 150,
+      "description": "Stuffed potato flatbread pan-fried to perfection, served with tangy pickle and fresh curd.",
+      "image": "images/aloo_paratha.jpg"
+    },
+    {
+      "id": "meal_biryani",
+      "name": "Vegetable Biryani",
+      "price": 240,
+      "description": "Fragrant basmati rice cooked with aromatic spices, mixed vegetables, and served with raita.",
+      "image": "images/biryani.jpg"
+    },
+    {
+      "id": "meal_dosa",
+      "name": "Dosa with Sambar & Chutney",
+      "price": 160,
+      "description": "Crispy South Indian crepe made from fermented rice and lentils, served with lentil sambar and coconut chutney.",
+      "image": "images/dosa.jpg"
+    },
+    {
+      "id": "meal_pasta_red",
+      "name": "Creamy Tomato Pasta",
+      "price": 180,
+      "description": "Homemade pasta in a rich, creamy tomato sauce with fresh herbs, topped with parmesan cheese.",
+      "image": "images/pasta_tomato.jpg"
+    },
+    {
+      "id": "meal_pasta_white",
+      "name": "Alfredo Pasta",
+      "price": 200,
+      "description": "Creamy white sauce pasta with garlic, butter, and parmesan cheese, garnished with fresh parsley.",
+      "image": "images/pasta_alfredo.jpg"
+    },
+    {
+      "id": "meal_chinese_manchurian",
+      "name": "Veg Manchurian",
+      "price": 190,
+      "description": "Crispy vegetable balls in a tangy, spicy Manchurian sauce, served with fried rice or noodles.",
+      "image": "images/veg_manchurian.jpg"
+    },
+    {
+      "id": "meal_chinese_hakka",
+      "name": "Hakka Noodles",
+      "price": 170,
+      "description": "Stir-fried noodles with mixed vegetables, tossed in a savory sauce with aromatic spices.",
+      "image": "images/hakka_noodles.jpg"
+    },
+    {
+      "id": "meal_indian_samosa",
+      "name": "Samosa Chaat",
+      "price": 140,
+      "description": "Crispy samosas topped with tangy chutneys, yogurt, onions, and sev - a perfect street food delight.",
+      "image": "images/samosa_chaat.jpg"
+    },
+    {
+      "id": "meal_indian_pav",
+      "name": "Pav Bhaji",
+      "price": 160,
+      "description": "Spiced vegetable curry served with butter-toasted bread rolls, garnished with fresh coriander and onions.",
+      "image": "images/pav_bhaji.jpg"
+    },
+    {
+      "id": "meal_indian_dal",
+      "name": "Dal Tadka with Jeera Rice",
+      "price": 175,
+      "description": "Tempered yellow lentils cooked with spices, served with aromatic cumin rice and pickle.",
+      "image": "images/dal_tadka.jpg"
+    },
+    {
+      "id": "meal_indian_paratha",
+      "name": "Gobi Paratha with Butter",
+      "price": 155,
+      "description": "Stuffed cauliflower flatbread pan-fried with butter, served with pickle, yogurt, and butter.",
+      "image": "images/gobi_paratha.jpg"
+    }
+  ]
+}

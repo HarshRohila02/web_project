@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeCook - Sign Up</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="auth-container">
+        
+        <div class="auth-image-panel">
+            <div style="text-align: center;">
+                <img src="/images/logo.png" alt="HomeCook Logo" class="logo" style="height: 150px; width: auto; margin-bottom: 20px;">
+                <h1 class="site-title" style="font-size: 2.5rem;">Join HomeCook</h1>
+                <p class="tagline" style="font-size: 1rem; color: #4a4a4a;">Start your journey to healthier, homemade meals today!</p>
+            </div>
+        </div>
+
+        <div class="auth-form-panel">
+            <h2>Create Your Account</h2>
+            <p class="subtitle">Sign up to enjoy personalized, home-cooked Indian meals delivered to your door.</p>
+            
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName">Full Name:</label>
+                    <input type="text" id="signupName" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" id="signupEmail" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPhone">Phone (Optional):</label>
+                    <input type="tel" id="signupPhone" name="phone" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="signupLocation">Location/Address:</label>
+                    <input type="text" id="signupLocation" name="location" placeholder="Enter your location or address">
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password:</label>
+                    <input type="password" id="signupPassword" name="password" placeholder="Create a password" required>
+                    <div id="password-strength" style="margin-top: 5px; font-size: 0.85rem;"></div>
+                </div>
+                <div class="form-group">
+                    <label for="signupPasswordConfirm">Confirm Password:</label>
+                    <input type="password" id="signupPasswordConfirm" name="passwordConfirm" placeholder="Confirm your password" required>
+                    <div id="password-match" style="margin-top: 5px; font-size: 0.85rem;"></div>
+                </div>
+                <div class="form-group">
+                    <label for="dietaryPreferences">Dietary Preferences (Optional):</label>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 5px;">
+                        <label><input type="checkbox" name="dietaryPreferences" value="vegetarian"> Vegetarian</label>
+                        <label><input type="checkbox" name="dietaryPreferences" value="vegan"> Vegan</label>
+                        <label><input type="checkbox" name="dietaryPreferences" value="gluten-free"> Gluten-Free</label>
+                        <label><input type="checkbox" name="dietaryPreferences" value="spicy"> Spicy Food Lover</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <p class="link-text">
+                    Already have an account? <a href="/user_auth.html">Login</a>
+                </p>
+                <div id="signup-message" style="display: none; margin-top: 15px; padding: 10px; border-radius: 5px; text-align: center;"></div>
+            </form>
+
+            <p class="link-text" style="margin-top: 50px;">
+                <a href="/">← Back to Home</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
+

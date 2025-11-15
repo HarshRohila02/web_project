@@ -1,0 +1,8 @@
+{
+    "taxRate": 0.05,
+    "deliveryOptions": [
+        { "id": "pickup", "label": "Self-Pickup", "default": true },
+        { "id": "delivery", "label": "Home Delivery", "default": false }
+    ]
+}
+

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeCook - Meal Plans & Subscriptions</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main class="menu-page">
+        <h2>Choose Your Flexible Meal Plan</h2>
+        <p class="subtitle">Our subscription plans offer the best value and continuity for enjoying homemade meals that suit your budget and lifestyle.</p>
+
+        <!-- Filter and Search Section -->
+        <div style="max-width: 1200px; margin: 30px auto; padding: 0 5%;">
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
+                <input type="text" id="meal-search-input" placeholder="Search meals..." 
+                       style="flex: 1; min-width: 200px; padding: 10px; border: 2px solid #ddd; border-radius: 5px;">
+                <select id="price-filter" style="padding: 10px; border: 2px solid #ddd; border-radius: 5px;">
+                    <option value="">All Prices</option>
+                    <option value="0-150">₹0 - ₹150</option>
+                    <option value="150-200">₹150 - ₹200</option>
+                    <option value="200-250">₹200 - ₹250</option>
+                    <option value="250+">₹250+</option>
+                </select>
+                <select id="sort-options" style="padding: 10px; border: 2px solid #ddd; border-radius: 5px;">
+                    <option value="default">Default</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="name">Name: A to Z</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="plans-container" id="plans-container-target">
+        </div>
+
+        <h2 class="section-title">Instant Meal Boxes</h2>
+        <p class="subtitle">Quick, one-time order options perfect for sudden cravings. Click "Add to Cart" and proceed to checkout.</p>
+
+        <div class="instant-meals-container" id="instant-meals-target">
+        </div>
+        
+        <div class="content-centered" style="margin-top: 50px;">
+             <a href="/checkout.html" class="btn btn-primary" style="width: 100%; text-align: center; max-width: 400px; display: block; margin: 0 auto;">Proceed to Checkout</a>
+        </div>
+        
+    </main>
+    
+    <%- include('partials/footer') %>
+    <script src="/js/script.js"></script>
+</body>
+</html>
+
