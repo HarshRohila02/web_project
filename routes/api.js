@@ -79,6 +79,7 @@ router.delete('/orders/:id', async (req, res) => {
 // Create review
 router.post('/reviews', async (req, res) => {
     try {
+        if (!req.body.userId) return res.status(400).json({ success: false, error: 'userId required' });
         const review = new Review(req.body);
         await review.save();
         res.status(201).json({ success: true, data: review });
@@ -120,30 +121,35 @@ router.get('/reviews/:id', async (req, res) => {
     }
 });
 
-// Update review
+// Update review (only the owner can update)
 router.put('/reviews/:id', async (req, res) => {
     try {
-        const review = await Review.findByIdAndUpdate(
-            req.params.id,
-            req.body,
-            { new: true, runValidators: true }
-        );
-        if (!review) {
-            return res.status(404).json({ success: false, error: 'Review not found' });
+        const review = await Review.findById(req.params.id);
+        if (!review) return res.status(404).json({ success: false, error: 'Review not found' });
+        // userId must be in body (sent by frontend)
+        if (!req.body.userId) return res.status(401).json({ success: false, error: 'userId required' });
+        if (String(review.userId) !== String(req.body.userId)) {
+            return res.status(401).json({ success: false, error: 'Not authorized to update this review.' });
         }
+        Object.assign(review, req.body);
+        await review.save();
         res.json({ success: true, data: review });
     } catch (error) {
         res.status(400).json({ success: false, error: error.message });
     }
 });
 
-// Delete review
+// Delete review (only owner)
 router.delete('/reviews/:id', async (req, res) => {
     try {
-        const review = await Review.findByIdAndDelete(req.params.id);
-        if (!review) {
-            return res.status(404).json({ success: false, error: 'Review not found' });
+        const userId = req.query.userId;
+        if (!userId) return res.status(401).json({ success: false, error: 'userId required' });
+        const review = await Review.findById(req.params.id);
+        if (!review) return res.status(404).json({ success: false, error: 'Review not found' });
+        if (String(review.userId) !== String(userId)) {
+            return res.status(401).json({ success: false, error: 'Not authorized to delete this review.' });
         }
+        await review.deleteOne();
         res.json({ success: true, message: 'Review deleted successfully' });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });

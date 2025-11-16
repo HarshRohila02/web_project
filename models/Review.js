@@ -5,6 +5,7 @@ const reviewSchema = new mongoose.Schema({
     mealName: { type: String, required: true },
     userName: { type: String, required: true },
     userEmail: { type: String, required: true },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }, // Added userId for user-specific ownership
     rating: { 
         type: Number, 
         required: true, 

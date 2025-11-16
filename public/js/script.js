@@ -189,9 +189,15 @@ class ReviewSystem {
         }
         
         let html = '';
+        const user = JSON.parse(localStorage.getItem('homecookUser')||'{}');
         this.reviews.forEach(review => {
             const stars = '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating);
             const date = new Date(review.createdAt).toLocaleDateString();
+            let buttons = '';
+            if (user?.id && review.userId == user.id) {
+                buttons = `<button class='btn-edit-review' data-id='${review._id}' style='margin-right:10px;background:#2196F3;color:white;border:none;padding:5px 15px;border-radius:4px;cursor:pointer'>Edit</button>
+                           <button class='btn-delete-review' data-id='${review._id}' style='background:#f44336;color:white;border:none;padding:5px 15px;border-radius:4px;cursor:pointer'>Delete</button>`;
+            }
             html += `
                 <div style="background: white; padding: 20px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
                     <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
@@ -200,6 +206,7 @@ class ReviewSystem {
                     </div>
                     <p style="color: #666; margin: 5px 0;"><strong>${review.userName}</strong> - ${date}</p>
                     <p>${review.comment}</p>
+                    <div style="margin-top: 10px; text-align: right;">${buttons}</div>
                 </div>
             `;
         });
@@ -462,11 +469,11 @@ async function initializeHowItWorksPage() {
 }
 
 async function initializeReviewsPage() {
-    const reviewSystem = new ReviewSystem();
+    window.reviewSystem = new ReviewSystem();
     const container = document.getElementById('reviews-container');
     
-    await reviewSystem.loadReviews();
-    reviewSystem.renderReviews(container);
+    await window.reviewSystem.loadReviews();
+    window.reviewSystem.renderReviews(container);
     
     // Attach filter listeners
     const ratingFilter = document.getElementById('review-rating-filter');
@@ -477,8 +484,8 @@ async function initializeReviewsPage() {
             rating: ratingFilter?.value || '',
             sortBy: sortFilter?.value === 'newest' ? '' : sortFilter?.value === 'oldest' ? 'oldest' : 'rating'
         };
-        await reviewSystem.loadReviews(filters);
-        reviewSystem.renderReviews(container);
+        await window.reviewSystem.loadReviews(filters);
+        window.reviewSystem.renderReviews(container);
     };
     
     if (ratingFilter) ratingFilter.addEventListener('change', applyFilters);
@@ -515,11 +522,17 @@ async function initializeReviewsPage() {
     if (reviewForm) {
         reviewForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            const user = JSON.parse(localStorage.getItem('homecookUser')||'{}');
+            if (!user.id) {
+              showPopup('Please log in to submit or update a review.','error');
+              return;
+            }
             const formData = new FormData(reviewForm);
             const reviewData = {
                 mealName: formData.get('mealName'),
                 userName: formData.get('userName'),
                 userEmail: formData.get('userEmail'),
+                userId: user.id, // link review to the logged in user
                 rating: parseInt(formData.get('rating')),
                 comment: formData.get('comment')
             };
@@ -529,13 +542,23 @@ async function initializeReviewsPage() {
                 return;
             }
             
-            const result = await reviewSystem.createReview(reviewData);
+            let result;
+            if (window.editingReviewId) {
+                // Edit mode
+                result = await fetch('/api/reviews/' + window.editingReviewId, {
+                  method: 'PUT',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(reviewData)
+                }).then(r => r.json());
+                delete window.editingReviewId;
+            } else {
+                result = await window.reviewSystem.createReview(reviewData);
+            }
             if (result.success) {
-                showPopup('Review submitted successfully!', 'success');
+                showPopup(window.editingReviewId ? 'Review updated!' : 'Review submitted successfully!', 'success');
                 reviewForm.reset();
-                selectedRating = 0;
-                stars.forEach(s => s.textContent = '☆');
-                await applyFilters();
+                document.querySelectorAll('#star-rating .star').forEach(s=>s.textContent='☆');
+                if (typeof initializeReviewsPage === 'function') await initializeReviewsPage();
             } else {
                 showPopup('Failed to submit review. Please try again.', 'error');
             }
@@ -831,10 +854,10 @@ function initializeLoginForm() {
                 
                 const result = await response.json();
                 if (result.success) {
+                    // Save login info in localStorage
+                    localStorage.setItem('homecookUser', JSON.stringify(result.data));
                     showPopup('Login successful!', 'success');
-                    setTimeout(() => {
-                        window.location.href = '/';
-                    }, 1500);
+                    setTimeout(() => { window.location.href = '/'; }, 1500);
                 } else {
                     showPopup(result.error || 'Invalid credentials', 'error');
                 }
@@ -941,6 +964,61 @@ function initializeIndexPage() {
     }
 }
 
+// Add CSS animations
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideIn {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes slideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+    }
+`;
+document.head.appendChild(style);
+
+// --- Global review edit/delete handlers ---
+document.addEventListener('click', async function(event) {
+  const user = JSON.parse(localStorage.getItem('homecookUser')||'{}');
+  // Edit handler
+  if (event.target.classList.contains('btn-edit-review')) {
+    const id = event.target.getAttribute('data-id');
+    const review = (window.reviewSystem && window.reviewSystem.reviews.find(r => r._id === id)) || null;
+    if (!review) return showPopup('Could not load review for editing', 'error');
+    document.getElementById('reviewMealName').value = review.mealName;
+    document.getElementById('reviewUserName').value = review.userName;
+    document.getElementById('reviewUserEmail').value = review.userEmail;
+    document.getElementById('reviewRating').value = review.rating;
+    document.getElementById('reviewComment').value = review.comment;
+    // update stars visual
+    const stars = document.querySelectorAll('#star-rating .star');
+    for(let i=0;i<stars.length;i++){
+      stars[i].textContent = i < review.rating ? '★' : '☆';
+    }
+    window.editingReviewId = id;
+    showPopup('Edit this review and submit to update.','info');
+  }
+  // Delete handler
+  if (event.target.classList.contains('btn-delete-review')) {
+    const id = event.target.getAttribute('data-id');
+    if (!user.id) {
+      showPopup('You must be logged in to delete your review','error');
+      return;
+    }
+    if (confirm('Are you sure you want to delete this review?')) {
+      const res = await fetch(`/api/reviews/${id}?userId=${user.id}`, { method: 'DELETE' });
+      const result = await res.json();
+      if (result.success) {
+        showPopup('Review deleted!', 'success');
+        if (typeof initializeReviewsPage === 'function') initializeReviewsPage();
+      } else {
+        showPopup('Could not delete: ' + result.error, 'error');
+      }
+    }
+  }
+});
+
 // ========== MAIN INITIALIZATION ==========
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -968,17 +1046,3 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeHomeCookForm();
     initializeIndexPage();
 });
-
-// Add CSS animations
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes slideOut {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(100%); opacity: 0; }
-    }
-`;
-document.head.appendChild(style);
