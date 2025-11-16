@@ -650,3 +650,124 @@ h2 {
     display: block;
     margin-top: 20px;
 }
+
+/* --- Interactive Card Effects --- */
+
+/* 1. Instant Meals Section - .meal-card */
+.meal-card {
+    transition:
+      transform 0.3s cubic-bezier(.4,0,.2,1),
+      box-shadow 0.3s cubic-bezier(.4,0,.2,1),
+      border 0.3s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: relative;
+    background: white;
+    will-change: transform, box-shadow;
+    z-index: 1;
+  }
+  .meal-card:hover,
+  .meal-card:focus-visible,
+  .meal-card:active {
+    transform: scale(1.08);
+    box-shadow: 0 8px 32px rgba(33,150,243,0.09), 0 2px 10px rgba(0,0,0,0.15);
+    border-color: #f2b164;
+    z-index: 2;
+  }
+  .meal-card::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    left:0; top:0; right:0; bottom:0;
+    background: radial-gradient(circle, rgba(255,230,180,0.13) 0%, rgba(255,255,255,0) 80%);
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(.4,0,.2,1);
+    border-radius: 8px;
+  }
+  .meal-card:hover::before,
+  .meal-card:focus-visible::before,
+  .meal-card:active::before {
+    opacity: 1;
+  }
+  
+  /* 2. Subscription Plan Cards - .plan-card */
+  .plan-card {
+    transition:
+      transform 0.3s cubic-bezier(.4,0,.2,1),
+      box-shadow 0.3s cubic-bezier(.4,0,.2,1),
+      border 0.3s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+    will-change: transform, box-shadow, border;
+    z-index: 1;
+  }
+  .plan-card:hover,
+  .plan-card:focus-visible,
+  .plan-card:active {
+    transform: scale(1.05);
+    box-shadow: 0 12px 36px rgba(41,182,246,0.13), 0 2px 12px rgba(0,0,0,0.14);
+    border: 2px solid #e67e22;
+    z-index: 2;
+  }
+  
+  /* 3. How It Works (Steps) - .step-card */
+  .step-card {
+    transition:
+      transform 0.3s cubic-bezier(.4,0,.2,1),
+      box-shadow 0.3s cubic-bezier(.4,0,.2,1),
+      box-shadow-color 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    will-change: transform, box-shadow;
+    position: relative;
+  }
+  .step-card:hover,
+  .step-card:focus-visible,
+  .step-card:active {
+    transform: scale(1.08);
+    box-shadow: 0 8px 32px rgba(97,133,222,0.14), 0 2px 14px rgba(0,0,0,0.16);
+    background: linear-gradient(102deg, rgba(255,248,229,0.18) 0%, rgba(255,255,255,1));
+    border: 2px solid #e67e22;
+    z-index: 2;
+  }
+  .step-card::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    left:0; top:0; right:0; bottom:0;
+    background: radial-gradient(circle, #ffefd4 0%, rgba(255,255,255,0) 90%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: 10px;
+    border: 2px solid #e67e22;
+  }
+  .step-card:hover::before, .step-card:focus-visible::before, .step-card:active::before {
+    opacity: 0.3;
+  }
+  
+  /* --- General interactive card guidelines --- */
+  @media (hover: hover) and (pointer: fine) {
+    .meal-card:hover, .plan-card:hover, .step-card:hover {
+      cursor: pointer;
+    }
+  }
+  @media (hover: none) and (pointer: coarse) {
+    .meal-card:active, .plan-card:active, .step-card:active {
+      /* Give quick pop visual for tap devices */
+      box-shadow: 0 2px 8px rgba(250,122,122,0.10), 0 2px 12px rgba(0,0,0,0.12);
+      filter: brightness(1.01);
+    }
+  }
+  
+  /* Ensure scaling does not cause overlap */
+  .meal-card, .plan-card, .step-card {
+    /* This allows shadows/scaling to pop over background rather than squishing cards */
+    z-index: 1;
+  }
+  
+  /* Optional: For touch feedback, prevent overlap during scale by using a bit of margin */
+  .instant-meals-container .meal-card,
+  .plans-container .plan-card,
+  .steps-container .step-card {
+    margin-bottom: 24px;
+  }
+  
+  /* Make sure all transitions are smooth and the parent grid/flexbox allows scale-up room */
